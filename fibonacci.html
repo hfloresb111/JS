@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParesImpares</title>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    <div class="container">
+        <label for="miInput">Dame un numero:</label>
+        <input type="text" id="entrada" placeholder="Numero entero (0-100)" >
+    </div>
+    <button id="boton">Detremina</button>
+    <div id="salida"></div>
+    <script>
+        const titulo=document.getElementById("titulo"); 
+        titulo.textContent="Detrminacion Secuncio Fibonacio de Numero"
+        const entrada=document.getElementById("entrada")
+        const salida=document.getElementById("salida")
+        const boton=document.getElementById("boton")
+        boton.addEventListener("click", function() {
+           // Convertir el valor del input a número entero
+           const numero = parseInt(entrada.value);
+           // Llamar a la función y mostrar el resultado
+           const resultado = fibo(numero);
+           salida.textContent = resultado;
+       });
+       function fibo(n) {
+            if ((n < 0) || (n>100)) {
+                resul = "Calor furra de rango"
+            } else {
+                let n1 = 0
+                let n2 = 1
+                sum= null
+                resul = ""+ n1 
+                for (let i = 3; i <= n && sum <= n ; i++) {
+                    sum = n1 + n2
+                    n1 = n2
+                    n2 = sum 
+                    resul = resul + ","+ n1 
+                }
+            }
+             return (resul)      
+        }
+    </script>    
+</body>
+</html>

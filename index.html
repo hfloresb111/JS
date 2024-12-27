@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="titulo"></h1>
+    <button id="boton">
+        cambiar de color
+    </button>
+    <input type="text" id="entrada"  placeholder="Escribe algo">
+    <p>Lo que escribes: <span id="salida"></span></p> 
+    <button id="contarBtn">Has Clik </button>
+    <p>Clics: <span id="contador">0</span></p>
+
+    <button  id="toggleBtn">Mostra/Ocultar</button>  
+    <p id="texto" style="display: note;">Este es el texto oculto</p>
+    
+
+    <script>
+        const titulo=document.getElementById("titulo"); 
+        titulo.textContent="Hola Mundo"
+        const boton=document.getElementById("boton")
+        boton.addEventListener("click",()=>{
+            document.body.style.backgroundColor= "lightblue";
+            }
+        )
+      const entrada=document.getElementById("entrada")
+      const salida=document.getElementById("salida")
+      entrada.addEventListener("input",()=>{
+              salida.textContent=entrada.value
+      } )   
+
+      const contarBtn= document.getElementById("contarBtn") 
+      const contador= document.getElementById("contador")
+      let cuenta=0
+      contarBtn.addEventListener("click", ()=>{
+         cuenta++;
+         contador.textContent=cuenta;
+
+      })
+
+      const toggleBtn= document.getElementById("toggleBtn") 
+      const texto= document.getElementById("texto") 
+      let visible=false;
+      toggleBtn.addEventListener("click", ()=>{
+        visible = !visible;
+        texto.style.display = visible ? "block" : "none";
+      })
+
+    </script>
+</html>

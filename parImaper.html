@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParesImpares</title>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    
+    
+    <div class="container">
+        <label for="miInput">Dame un numero:</label>
+        <input type="text" id="entrada" placeholder="Numero entero" >
+    </div>
+    <button id="boton">Detremina</button>
+    <div id="salida"></div>
+    <script>
+        const titulo=document.getElementById("titulo"); 
+        titulo.textContent="Detrminacion si es Palindromo"
+        const entrada=document.getElementById("entrada")
+        const salida=document.getElementById("salida")
+        const boton=document.getElementById("boton")
+        boton.addEventListener("click", function() {
+           // Convertir el valor del input a número entero
+           const numero = entrada.value;
+           // Llamar a la función y mostrar el resultado
+           const resultado = palindromo(numero);
+           salida.textContent = resultado;
+       });
+       function palindromo(num) {
+            palabra = num
+            resul = ""
+            for (let i = palabra.length - 1; i >= 0; i--) {
+                resul = resul + palabra[i]
+            }
+            if (resul === palabra) {
+                return (num+ " Es un aplindromo")
+            } else {
+                return (num + " No es un aplindromo")
+            }
+        }   
+    </script>    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParesImpares</title>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    
+    
+    <div class="container">
+        <label for="miInput">Dame un numero:</label>
+        <input type="text" id="num1" placeholder="Numero entero" >
+        <input type="text" id="num2" placeholder="Numero entero" >
+        <input type="text" id="num3" placeholder="Numero entero" >
+    </div>
+    <button id="boton">Detremina</button>
+    <div id="salida"></div>
+    <script>
+        const titulo=document.getElementById("titulo"); 
+        titulo.textContent="Detrminacion numero mayor de tres"
+        const num1=document.getElementById("num1")
+        const num2=document.getElementById("num2")
+        const num3=document.getElementById("num3")
+        const sal1=document.getElementById("sal1")
+        const sal2=document.getElementById("sal2")
+        const sal3=document.getElementById("sal3")
+        const boton=document.getElementById("boton")
+        boton.addEventListener("click", function() {
+           // Convertir el valor del input a número entero
+           const numero1 = parseInt(num1.value);
+           const numero2 = parseInt(num2.value);
+           const numero3 = parseInt(num3.value);
+           // Llamar a la función y mostrar el resultado
+           const resultado = mayor(numero1,numero2,numero3);
+           salida.textContent = resultado;
+       });
+       function mayor(n1,n2,n3) {
+            let mayor = null
+            let tex = null
+            let tetx =""
+            if (n1 >n2 && n1 > n3) {
+                mayor = n1
+                tex = "n1"
+            } else {
+                if (n2 > n1 && n2 > n3) {
+                    mayor = n2
+                    tex = "n2"
+                }  else {
+                    if (n3 >n1 && n3 > n2) {
+                        mayor = n3
+                        tex = "n3"
+                    }  
+                }
+            }
+            if (mayor != null) {
+                return tex + " numero mayor " + mayor
+            } else {
+                if (n1 === n2 && n1 === n3) {
+                    return "todos los numeros son iguales " + n1
+                } else {
+                    if (n1 === n2) {
+                        return "n1 y n2 son iguales " + n1
+                    }else {
+                        if (n1 === n3) {
+                            return "n1 y n3 son iguales " + n1
+                        } else {
+                            return "n2 y n3 son iguales " + n2
+                        }
+                    }
+                }
+            }
+        }
+    </script>    
+</body>
+</html>
