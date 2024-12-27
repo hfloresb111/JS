@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParesImpares</title>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    
+    
+    <div class="container">
+        <label for="miInput">Dame Palabra1:</label>
+        <input type="text" id="entrada1" placeholder="Cadena de Caracteres" >
+        <label for="miInput">Dame Palabra2:</label>
+        <input type="text" id="entrada2" placeholder="Cadena de Caracteres" >
+    </div>
+    <button id="boton">Detremina</button>
+    <div id="salida"></div>
+    <script>
+        const titulo=document.getElementById("titulo"); 
+        titulo.textContent="Detrminacion si es Palindromo"
+        const entrada1=document.getElementById("entrada1")
+        const salida1=document.getElementById("salida1")
+        const entrada2=document.getElementById("entrada2")
+        const salida2=document.getElementById("salida2")
+
+        const boton=document.getElementById("boton")
+        boton.addEventListener("click", function() {
+           // Convertir el valor del input a número entero
+           const numero1 = entrada1.value;
+           const numero2 = entrada2.value;
+           // Llamar a la función y mostrar el resultado
+           const resultado = esAnagrama(numero1,numero2);
+           salida.textContent = resultado;
+       });
+       function esAnagrama(str1, str2){
+            let comp = true, ind=0;
+            //elimina espacios y aseguramos minúsuclas
+            str1 = str1.trim().toLowerCase();
+            str2 = str2.trim().toLowerCase();
+            if(str1.length !== str2.length || str1 == str2){
+                  comp = false;
+            } else{
+                do{
+            //Comprueba que todas las letras de str2 están en str1        
+            //Ve elimando las letras de str1 para detectar repetidas
+                  comp = str1.includes(str2[ind]);
+                  str1 = str1.replace(str1[ind],'');
+                }while (++ind< str1.length & comp);
+            }
+            return comp;
+        }  
+    </script>    
+</body>
+</html>
