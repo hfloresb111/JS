@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Ejemplo de Async</h1>
+    <button id="fetch-posts">Cargar Api Star Wart</button>
+    <div id="posts"> </div>
+    <script>
+        async function fetchpost(params) {
+            try {
+                const postContainer=document.getElementById("posts");
+                postContainer.innerHTML="<p>Caregando..</p>"
+
+                const response = await fetch("https://www.swapi.tech/api/people")
+                const band=false
+                if (!response.ok) {
+                    band=false
+                   throw new Error("Error al Obtener los posts")                
+                }                 
+                const posts = await response.json();
+                postContainer.innerHTML=""
+                posts.results.forEach(post => {
+                   const postElement = document.createElement("div");
+                   postElement.className = "post";
+                   postElement.innerHTML = `
+                       <h3>ID: ${post.uid} | Nombre: ${post.name}</h3>
+                   `;
+                   postContainer.appendChild(postElement);
+               });
+            } catch (error) {
+               document.getElementById("posts").innerHTML = `<p style="color:red;">${error.message}</p>`
+            }   
+        }
+        document.getElementById("fetch-posts").addEventListener("click",fetchpost)
+        
+    </script>
+    <div class="container"></div>
+        <label for="miInput">Dame un numero:</label>
+        <input type="text" id="entrada" placeholder="Numero entero" >
+    </div>
+    <button id="fetch-posts2">Cargar Api</button>
+    <div id="salida"></div>
+
+
+</body>
+</html>
