@@ -40,11 +40,48 @@
         
     </script>
     <div class="container"></div>
-        <label for="miInput">Dame un numero:</label>
-        <input type="text" id="entrada" placeholder="Numero entero" >
+        <label for="miInput">ID Personaje:</label>
+        <input type="text" id="entrada" placeholder="Dame un Id de personaje" >
     </div>
     <button id="fetch-posts2">Cargar Api</button>
-    <div id="salida"></div>
+    <div id="posts2"></div>
+
+    <button id="fetch-posts2">Cargar</button>
+    <div id="posts2"> </div>
+    <script>
+        const numId = "https://www.swapi.tech/api/people/4"
+        async function fetchpost2(params) {
+   try {
+       const postContainer = document.getElementById("posts2");
+       postContainer.innerHTML = "<p>Cargando...</p>";
+        const response = await fetch("https://www.swapi.tech/api/people/1");
+        if (!response.ok) {
+           throw new Error("Error al obtener los datos del personaje");
+       }
+        const data = await response.json();
+       const personaje = data.result.properties; // Accedemos a las propiedades del personaje
+       
+       postContainer.innerHTML = `
+           <div class="post">
+               <h3>Nombre: ${personaje.name} | 
+                   Altura: ${personaje.height} | 
+                   Peso: ${personaje.mass} | 
+                   Color de pelo: ${personaje.hair_color} | 
+                   Color de piel: ${personaje.skin_color}</h3>
+           </div>
+       `;
+   } catch (error) {
+       document.getElementById("posts2").innerHTML = `<p style="color:red;">${error.message}</p>`;
+   }   
+        }
+        document.getElementById("fetch-posts2").addEventListener("click",fetchpost2)
+
+    </script>
+
+
+
+
+    
 
 
 </body>
